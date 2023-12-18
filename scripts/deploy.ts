@@ -31,7 +31,8 @@ async function main() {
   // if not a local chain verify the contract
   // it will fail if no etherscan key is provided
   if (!developmentChains.includes(network.name)) {
-    messageStorage.deploymentTransaction()!.wait(6);
+    console.log("Wait before verifying");
+    await messageStorage.deploymentTransaction()!.wait(6);
     await verify(await messageStorage.getAddress(), [INITIAL_MESSAGE]);
   }
 
