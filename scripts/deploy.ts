@@ -29,6 +29,7 @@ async function main() {
   console.log("\nIf you want to live test it, remember to add the address in the helper-hardhat-config.ts file\n");
 
   // if not a local chain verify the contract
+  // it will fail if no etherscan key is provided
   if (!developmentChains.includes(network.name)) {
     messageStorage.deploymentTransaction()!.wait(6);
     await verify(await messageStorage.getAddress(), [INITIAL_MESSAGE]);
